@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    https://www.springframework.org/schema/context
+    https://www.springframework.org/schema/beans/spring-context.xsd">
+	<!-- for class B -->
+	<bean name="bref" class="com.springcore.Referance.B">
+		<property name="y" value="90" />
+
+	</bean>
+	<!-- for class A -->
+	<bean name="aref" class="com.springcore.Referance.A">
+		<property name="x" value="55" />
+
+		<property name="ob">
+			<ref bean="bref" />
+		</property>
+
+		<!--(OR use this) <property name="ob" ref="bref" /> -->
+		<!--(OR use p schema) <bean name="aref" class="com.springcore.Referance.A" 
+			p:x=55 p:ob-ref="bref" /> -->
+	</bean>
+
+</beans>
